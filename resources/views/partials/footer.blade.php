@@ -8,77 +8,53 @@
                         <div class="footer-logo">
                             <figure>
                                 <a href="index.html">
-                                    <img loading="lazy" class="img-fluid" src="{{ asset('user') }}/images/logo-2.png"
-                                        alt="medic" />
+                                    <img src="{{ asset('user') }}/images/logo/logo-putih-1.png" class="img-fluid" alt="Awesome Logo" />
                                 </a>
                             </figure>
-                        </div>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur
-                            adipisicing elit. Molestias, temporibus?
-                        </p>
+                        </div>                        
                         <ul class="location-link">
                             <li class="item">
                                 <i class="fas fa-map-marker-alt"></i>
                                 <p>
-                                    Modamba, NY 80021, United States
+                                    Jalan Lenteng Agung Raya №20, Jakarta Selatan
                                 </p>
                             </li>
                             <li class="item">
                                 <i class="far fa-envelope" aria-hidden="true"></i>
                                 <a href="mailto:support@medic.com">
-                                    <p>support@medic.com</p>
+                                    <p>sobat@sehat.gmail.com</p>
                                 </a>
                             </li>
                             <li class="item">
                                 <i class="fas fa-phone" aria-hidden="true"></i>
-                                <p>(88017) +123 4567</p>
+                                <p>(+62) 881-298-743</p>
                             </li>
                         </ul>
                         <ul class="list-inline social-icons">
                             <li class="list-inline-item">
-                                <a href="https://facebook.com/themefisher" aria-label="facebook"><i
+                                <a href="https://facebook.com/" aria-label="facebook"><i
                                         class="fab fa-facebook-f"></i></a>
                             </li>
                             <li class="list-inline-item">
-                                <a href="https://twitter.com/themefisher" aria-label="twitter"><i
+                                <a href="https://twitter.com/" aria-label="twitter"><i
                                         class="fab fa-twitter"></i></a>
                             </li>
                             <li class="list-inline-item">
-                                <a href="https://instagram.com/themefisher" aria-label="instagram"><i
+                                <a href="https://instagram.com/" aria-label="instagram"><i
                                         class="fab fa-instagram"></i></a>
                             </li>
                             <li class="list-inline-item">
-                                <a href="https://github.com/themefisher" aria-label="github"><i
+                                <a href="https://github.com/" aria-label="github"><i
                                         class="fab fa-github"></i></a>
                             </li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-5 mb-3 mb-md-0">
-                    <h2>Services</h2>
-                    <ul class="menu-link">
-                        <li>
-                            <a href="service.html">
-                                <i class="fa fa-angle-right" aria-hidden="true"></i>Orthopadic Liabilities</a>
-                        </li>
-                        <li>
-                            <a href="service.html">
-                                <i class="fa fa-angle-right" aria-hidden="true"></i>Dental Clinic</a>
-                        </li>
-                        <li>
-                            <a href="service.html">
-                                <i class="fa fa-angle-right" aria-hidden="true"></i>Dormamu Clinic</a>
-                        </li>
-                        <li>
-                            <a href="service.html">
-                                <i class="fa fa-angle-right" aria-hidden="true"></i>Psycological Clinic</a>
-                        </li>
-                        <li>
-                            <a href="service.html">
-                                <i class="fa fa-angle-right" aria-hidden="true"></i>Gynaecological Clinic</a>
-                        </li>
-                    </ul>
+                    <h2>About Us</h2>
+                    <p>
+                            Sebuah website yang menyediakan layanan untuk membuat para penggemar olahraga dan kesehatan untuk dapat mencari tahu info kegiatan olahraga dan kesehatan yang akan dilaksanakan di sekitar mereka.
+                        </p>
                 </div>
                 <div class="col-lg-4 col-md-7">
                     <div class="social-links">
@@ -89,20 +65,16 @@
                                     <div class="media-left mr-3">
                                         <a href="blog-details.html">
                                             <img loading="lazy"
-                                                src="{{ asset('user') }}/images/blog/post-thumb-small.jpg"
+                                                src="{{ asset('user') }}/images/artikel/artikel-home-1.png"
                                                 alt="post-thumb" />
                                         </a>
                                     </div>
                                     <div class="media-body">
                                         <h5>
-                                            <a href="blog-details.html">A lesson adip
-                                                isicing</a>
+                                            <a href="blog-details.html">Senam Bersama</a>
                                         </h5>
                                         <p>
-                                            Lorem ipsum dolor sit
-                                            amet consectetur
-                                            adipisicing elit.
-                                            Aperiam, dolorem.
+                                            Senam bersama yang dilakukan oleh para pemuda depok
                                         </p>
                                     </div>
                                 </div>
@@ -112,21 +84,15 @@
                                     <div class="media-left mr-3">
                                         <a href="blog-details.html">
                                             <img loading="lazy"
-                                                src="{{ asset('user') }}/images/blog/post-thumb-small.jpg"
+                                                src="{{ asset('user') }}/images/artikel/artikel-home-2.png"
                                                 alt="post-thumb" />
                                         </a>
                                     </div>
                                     <div class="media-body">
                                         <h5>
-                                            <a href="blog-details.html">How to make an
-                                                event</a>
+                                            <a href="blog-details.html">Turnamen Sepak Bola</a>
                                         </h5>
-                                        <p>
-                                            Lorem ipsum dolor sit
-                                            amet consectetur
-                                            adipisicing elit.
-                                            Aperiam, dolorem.
-                                        </p>
+                                        <p>Turnamen Sepak Bola yang di selenggarakan oleh pemerintah</p>
                                     </div>
                                 </div>
                             </li>

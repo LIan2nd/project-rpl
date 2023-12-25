@@ -1,31 +1,10 @@
-<!--
- // WEBSITE: https://themefisher.com
- // TWITTER: https://twitter.com/themefisher
- // FACEBOOK: https://www.facebook.com/themefisher
- // GITHUB: https://github.com/themefisher/
--->
-
-<!--
-THEME: Medic | Medical HTML Template
-VERSION: 1.0.0
-AUTHOR: Themefisher
-
-HOMEPAGE: https://themefisher.com/products/medic-medical-template/
-DEMO: https://demo.themefisher.com/themefisher/medic/
-GITHUB: https://github.com/themefisher/Medic-Bootstrap-Medical-Template
-
-WEBSITE: https://themefisher.com
-TWITTER: https://twitter.com/themefisher
-FACEBOOK: https://www.facebook.com/themefisher
--->
-
 <!DOCTYPE html>
 <html lang="id">
 
 <head>
     <!-- ** Basic Page Needs ** -->
     <meta charset="utf-8" />
-    <title>Medic | Medical HTML Template</title>
+    <title>Sobat Sehat</title>
 
     <!-- ** Mobile Specific Metas ** -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -58,5 +37,5 @@ FACEBOOK: https://www.facebook.com/themefisher
     <link href="{{ asset('user') }}/css/style.css" rel="stylesheet" />
 
     <!--Favicon-->
-    <link rel="icon" href="{{ asset('user') }}/images/favicon.png" type="image/x-icon" />
+    <link rel="icon" href="{{ asset('user') }}/images/logo/logo-hitam-2.png" type="image/x-icon" />
 </head>

@@ -1,7 +1,7 @@
 @extends('layouts.main')
 @section('content')
     <!--Page Title-->
-    <section class="page-title text-center" style="background-image: url({{ asset('user') }}/images/background/3.jpg)">
+    <section class="page-title text-center" style="background-image: url({{ asset('user') }}/images/contact/contact1.png)">
         <div class="container">
             <div class="title-text">
                 <h1>Contact</h1>
@@ -29,8 +29,7 @@
                             <div class="media-body">
                                 <h3>Location</h3>
                                 <p>
-                                    PO Box 16122 Collins Street West <br />Victoria
-                                    8007 Canada
+                                    Jalan Lenteng Agung Raya №20, Jakarta Selatan
                                 </p>
                             </div>
                         </div>
@@ -40,8 +39,8 @@
                             <div class="media-body">
                                 <h3>Phone</h3>
                                 <p>
-                                    (+48) 564-334-21-22-34
-                                    <br />(+48) 564-334-21-22-38
+                                    (+62) 881-298-743
+                                    <br />(+62) 564-334-212
                                 </p>
                             </div>
                         </div>
@@ -51,8 +50,7 @@
                             <div class="media-body">
                                 <h3>Email</h3>
                                 <p>
-                                    info@templatepath.com
-                                    <br />info@cleanxer.com
+                                    sobat@sehat.gmail.com
                                 </p>
                             </div>
                         </div>
