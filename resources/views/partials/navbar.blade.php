@@ -8,15 +8,15 @@
 
         <div class="collapse navbar-collapse" id="navbarLinks">
             {{--  <img src="{{ asset('user') }}/images/logo/logo1.png" alt="Awesome Logo" />  --}}
-            <ul class="navbar-nav">
+            <ul class="navbar-nav mr-auto">
                 <li class="nav-item {{ Request::is('home') ? 'active' : '' }}">
                     <a class="nav-link" href="/home">Home</a>
                 </li>
-                <li class="nav-item {{ Request::is('information') ? 'active' : '' }}">
-                    <a class="nav-link" href="/information">Information</a>
+                <li class="nav-item {{ Request::is('informations*') ? 'active' : '' }}">
+                    <a class="nav-link" href="/informations">Information</a>
                 </li>
-                <li class="nav-item {{ Request::is('artikel') ? 'active' : '' }}">
-                    <a class="nav-link" href="/artikel">Artikel</a>
+                <li class="nav-item {{ Request::is('articles*') ? 'active' : '' }}">
+                    <a class="nav-link" href="/articles">Article</a>
                 </li>
                 <li class="nav-item {{ Request::is('contact') ? 'active' : '' }}">
                     <a class="nav-link" href="/contact">Contact</a>
@@ -25,10 +25,12 @@
                     <a class="nav-link" href="/about">About</a>
                 </li>
             </ul>
-        </div>
-        <div class="navbar-btn ml-20 d-none d-sm-block">
-            <a href="/register" class="btn btn-primary" class="nav justify-content-end">Register</a>
-            <a href="/login" class="btn btn-primary" class="nav justify-content-end">Login</a>
+
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a href="/login" class="nav-link">Login</a>
+                </li>
+            </ul>
         </div>
     </div>
 </nav>

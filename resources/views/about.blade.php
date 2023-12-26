@@ -31,10 +31,12 @@
                             "Kreativitas tanpa batas."
                         </h5>
                         <p>
-                            Kami merupakan sekelompok mahasiswa yang berada pada sebuah kelompok dimana kamu membuat sebuah website tentang informasi mengenai olahraga dan kesehatan. Kami berusaha untuk membuat website yang dapat memberikan informasi yang bermanfaat bagi masyarakat luas.
+                            Kami merupakan sekelompok mahasiswa yang berada pada sebuah kelompok dimana kami membuat sebuah
+                            website tentang informasi mengenai olahraga dan kesehatan. Kami berusaha untuk membuat website
+                            yang dapat memberikan informasi yang bermanfaat bagi masyarakat luas.
                         </p>
                         <h6>Mission</h6>
-                        <p>                            
+                        <p>
                             Menyediakan platform bagi masyarakat untuk berbagi informasi.<br>
                             Membangun komunitas masyarakat yang aktif dan kreatif.<br>
                             Memberikan dampak positif bagi masyarakat.<br>
@@ -48,5 +50,4 @@
             </div>
         </div>
     </section>
-
 @endsection

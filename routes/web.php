@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\InformationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,23 +19,20 @@ use Illuminate\Support\Facades\Route;
 Route::get('/home', function () {
     return view('index');
 });
-Route::get('/information', function () {
-    return view('information');
-});
+Route::get('/informations', [InformationController::class, 'index']);
+Route::get('/informations/information/{information:id}', [InformationController::class, 'show']);
+Route::get('/articles', [ArticleController::class, 'index']);
+Route::get('/articles/article/{article:id}', [ArticleController::class, 'show']);
+
 Route::get('/contact', function () {
     return view('contact');
 });
 Route::get('/about', function () {
     return view('about');
 });
-Route::get('/artikel', function () {
-    return view('artikel');
-});
-Route::get('/artikel-details', function () {
-    return view('artikel-details');
-});
 
-// tidak terpakai 
+
+// tidak terpakai
 // Route::get('/service', function () {
 //     return view('service');
 // });

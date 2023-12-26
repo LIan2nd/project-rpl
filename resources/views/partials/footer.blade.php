@@ -1,3 +1,8 @@
+@php
+    use App\Models\Article;
+
+    $articles = Article::latest()->get();
+@endphp
 <!--footer-main-->
 <footer class="footer-main">
     <div class="footer-top">
@@ -8,10 +13,11 @@
                         <div class="footer-logo">
                             <figure>
                                 <a href="index.html">
-                                    <img src="{{ asset('user') }}/images/logo/logo-putih-1.png" class="img-fluid" alt="Awesome Logo" />
+                                    <img src="{{ asset('user') }}/images/logo/logo-putih-1.png" class="img-fluid"
+                                        alt="Awesome Logo" />
                                 </a>
                             </figure>
-                        </div>                        
+                        </div>
                         <ul class="location-link">
                             <li class="item">
                                 <i class="fas fa-map-marker-alt"></i>
@@ -36,16 +42,14 @@
                                         class="fab fa-facebook-f"></i></a>
                             </li>
                             <li class="list-inline-item">
-                                <a href="https://twitter.com/" aria-label="twitter"><i
-                                        class="fab fa-twitter"></i></a>
+                                <a href="https://twitter.com/" aria-label="twitter"><i class="fab fa-twitter"></i></a>
                             </li>
                             <li class="list-inline-item">
                                 <a href="https://instagram.com/" aria-label="instagram"><i
                                         class="fab fa-instagram"></i></a>
                             </li>
                             <li class="list-inline-item">
-                                <a href="https://github.com/" aria-label="github"><i
-                                        class="fab fa-github"></i></a>
+                                <a href="https://github.com/" aria-label="github"><i class="fab fa-github"></i></a>
                             </li>
                         </ul>
                     </div>
@@ -53,49 +57,37 @@
                 <div class="col-lg-3 col-md-5 mb-3 mb-md-0">
                     <h2>About Us</h2>
                     <p>
-                            Sebuah website yang menyediakan layanan untuk membuat para penggemar olahraga dan kesehatan untuk dapat mencari tahu info kegiatan olahraga dan kesehatan yang akan dilaksanakan di sekitar mereka.
-                        </p>
+                        Sebuah website yang menyediakan layanan untuk membuat para penggemar olahraga dan kesehatan
+                        untuk dapat mencari tahu info kegiatan olahraga dan kesehatan yang akan dilaksanakan di sekitar
+                        mereka.
+                    </p>
                 </div>
                 <div class="col-lg-4 col-md-7">
                     <div class="social-links">
                         <h2>Recent Posts</h2>
                         <ul>
-                            <li class="item">
-                                <div class="media">
-                                    <div class="media-left mr-3">
-                                        <a href="blog-details.html">
-                                            <img loading="lazy"
-                                                src="{{ asset('user') }}/images/artikel/artikel-home-1.png"
-                                                alt="post-thumb" />
-                                        </a>
+                            @foreach ($articles->take(2) as $article)
+                                <li class="item">
+                                    <div class="media">
+                                        <div class="media-left mr-3">
+                                            <a href="blog-details.html">
+                                                <img loading="lazy"
+                                                    src="{{ asset('user') }}/images/artikel/artikel-home-1.png"
+                                                    alt="post-thumb" />
+                                            </a>
+                                        </div>
+                                        <div class="media-body">
+                                            <h5>
+                                                <a
+                                                    href="/articles/article/{{ $article->id }}">{{ $article->title }}</a>
+                                            </h5>
+                                            <p>
+                                                {{ Str::limit($article->body, 50) }}
+                                            </p>
+                                        </div>
                                     </div>
-                                    <div class="media-body">
-                                        <h5>
-                                            <a href="blog-details.html">Senam Bersama</a>
-                                        </h5>
-                                        <p>
-                                            Senam bersama yang dilakukan oleh para pemuda depok
-                                        </p>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="item">
-                                <div class="media">
-                                    <div class="media-left mr-3">
-                                        <a href="blog-details.html">
-                                            <img loading="lazy"
-                                                src="{{ asset('user') }}/images/artikel/artikel-home-2.png"
-                                                alt="post-thumb" />
-                                        </a>
-                                    </div>
-                                    <div class="media-body">
-                                        <h5>
-                                            <a href="blog-details.html">Turnamen Sepak Bola</a>
-                                        </h5>
-                                        <p>Turnamen Sepak Bola yang di selenggarakan oleh pemerintah</p>
-                                    </div>
-                                </div>
-                            </li>
+                                </li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>
