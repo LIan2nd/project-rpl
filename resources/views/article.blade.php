@@ -8,7 +8,7 @@
     <section class="page-title text-center" style="background-image: url({{ asset('user') }}/images/artikel/artikel1.png)">
         <div class="container">
             <div class="title-text">
-                <h1>Article Detail</h1>
+                <h1>Article</h1>
                 <ul class="title-menu clearfix">
                     <li>
                         <a href="/home">Home &nbsp;/</a>
@@ -16,7 +16,7 @@
                     <li>
                         <a href="/articles">Articles &nbsp;/</a>
                     </li>
-                    <li>Article Details</li>
+                    <li>Article</li>
                 </ul>
             </div>
         </div>

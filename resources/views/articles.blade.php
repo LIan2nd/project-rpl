@@ -8,13 +8,13 @@
     <section class="page-title text-center" style="background-image: url({{ asset('user') }}/images/artikel/artikel1.png)">
         <div class="container">
             <div class="title-text">
-                <h1>Article {{ $head }}</h1>
-                {{--  <ul class="title-menu clearfix">
+                <h1>Articles {{ $head }}</h1>
+                <ul class="title-menu clearfix">
                     <li>
-                        <a href="index.html">home &nbsp;/</a>
+                        <a href="/home">home &nbsp;/</a>
                     </li>
-                    <li>Blog</li>
-                </ul>  --}}
+                    <li>Articles</li>
+                </ul>
             </div>
         </div>
     </section>
@@ -57,7 +57,8 @@
                                 </div>
                             @endforeach
 
-                            <div class="styled-pagination">
+                            {{-- <div class="styled-pagination"> --}}
+                            <div class="mt-5">
                                 {{-- <ul>
                                     <li>
                                         <a class="prev" href="blog.html"><span class="fas fa-angle-left"

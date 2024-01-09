@@ -42,10 +42,6 @@
                             <li>
                                 <i class="fas fa-clock"></i>{{ $information->time }}
                             </li>
-                            <li>
-                                <i class="fas fa-caret-right"></i>optio repellendus
-                                quasi nisi vitae
-                            </li>
                         </ul>
                         <a href="appointment.html" class="btn btn-style-one">Register</a>
                     </div>
@@ -161,14 +157,11 @@
         <div class="container">
             <div class="section-title text-center">
                 <h3>
-                    Provided
-                    <span>Services</span>
+                    Layanan
+                    <span>Informasi</span>
                 </h3>
                 <p>
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Lorem
-                    ipsum dolor sit amet. qui suscipit atque <br />
-                    fugiat officia corporis rerum eaque neque totam animi, sapiente
-                    culpa. Architecto!
+                    Periksa layanan informasi lainnya di sini
                 </p>
             </div>
             <div class="row">

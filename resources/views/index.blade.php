@@ -45,7 +45,7 @@
                     <div class="col-12">
                         <!-- Slide Content Start -->
                         <div class="content text-center style">
-                            <h2 class="text-white text-bold mb-2" data-animation-in="slideInRight">ARTIKEL
+                            <h2 class="text-white text-bold mb-2" data-animation-in="slideInRight">Article
                             </h2>
                             <p class="tag-text mb-4" data-animation-in="slideInLeft">Jelajahi artikel seputar olahraga dan
                                 juga kesehatan terkini</p>
@@ -67,7 +67,7 @@
                 <div class="col-lg-12">
                     <div class="image-content">
                         <div class="section-title text-center">
-                            <h3>Best Artikel <span>of Our Website</span></h3>
+                            <h3>Best Article <span>of Our Website</span></h3>
                         </div>
                         <div class="row">
                             <div class="col-sm-6">

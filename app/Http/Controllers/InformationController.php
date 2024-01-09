@@ -14,7 +14,8 @@ class InformationController extends Controller
     public function index()
     {
         return view('informations', [
-            'informations' => Information::latest()->filter(request(['search']))->paginate(7)->withQueryString()
+            'informations' => Information::latest()->filter(request(['search']))->paginate(7)->withQueryString(),
+            'title' => "Informations"
         ]);
     }
 
@@ -25,7 +26,8 @@ class InformationController extends Controller
     {
         return view('information', [
             'information' => $information,
-            'informations' => Information::latest()->get()
+            'informations' => Information::latest()->get(),
+            'title' => "Information Detail"
         ]);
     }
 }

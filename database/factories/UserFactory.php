@@ -25,6 +25,7 @@ class UserFactory extends Factory
     {
         return [
             'role_id' => mt_rand(2, 3),
+            'contributor' => true,
             'name' => fake()->name(),
             'username' => fake()->username(),
             'email' => fake()->unique()->safeEmail(),

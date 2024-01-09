@@ -8,12 +8,12 @@
     <section class="page-title text-center" style="background-image: url({{ asset('user') }}/images/background/3.jpg)">
         <div class="container">
             <div class="title-text">
-                <h1>Information</h1>
+                <h1>Informations</h1>
                 <ul class="title-menu clearfix">
                     <li>
                         <a href="/home">home &nbsp;/</a>
                     </li>
-                    <li>information</li>
+                    <li>informations</li>
                 </ul>
             </div>
         </div>

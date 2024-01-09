@@ -8,7 +8,7 @@
 
         <div class="collapse navbar-collapse" id="navbarLinks">
             {{--  <img src="{{ asset('user') }}/images/logo/logo1.png" alt="Awesome Logo" />  --}}
-            <ul class="navbar-nav mr-auto">
+            <ul class="navbar-nav">
                 <li class="nav-item {{ Request::is('home') ? 'active' : '' }}">
                     <a class="nav-link" href="/home">Home</a>
                 </li>
@@ -25,9 +25,8 @@
                     <a class="nav-link" href="/about">About</a>
                 </li>
             </ul>
-
-            <ul class="navbar-nav">
-                <li class="nav-item">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item {{ Request::is('login') ? 'active' : '' }}">
                     <a href="/login" class="nav-link">Login</a>
                 </li>
             </ul>

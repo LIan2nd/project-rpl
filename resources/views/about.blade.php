@@ -7,7 +7,7 @@
                 <h1>about us</h1>
                 <ul class="title-menu clearfix">
                     <li>
-                        <a href="index.html">home &nbsp;/</a>
+                        <a href="/home">home &nbsp;/</a>
                     </li>
                     <li>about us</li>
                 </ul>

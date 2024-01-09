@@ -16,20 +16,21 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $title = '';
+        $head = '';
 
         if (request('category')) {
             $category = Category::firstWhere('slug', request('category'));
-            $title = 'with ' . $category->name . ' category';
+            $head = 'with ' . $category->name . ' category';
         }
         if (request('author')) {
             $author = User::firstWhere('username', request('author'));
-            $title = ' by ' . $author->name;
+            $head = ' by ' . $author->name;
         }
         return view('articles', [
-            'head' => $title,
+            'head' => $head,
             'articles' => Article::latest()->filter(request(['search', 'category', 'author']))->paginate(2)->withQueryString(),
-            'categories' => Category::latest()->get()
+            'categories' => Category::latest()->get(),
+            'title' => "Articles"
         ]);
     }
 
@@ -40,6 +41,7 @@ class ArticleController extends Controller
     {
         return view('article', [
             'article' => $article,
+            'title' => "Article Detail"
         ]);
     }
 }

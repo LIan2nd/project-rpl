@@ -66,28 +66,34 @@
                     <div class="social-links">
                         <h2>Recent Posts</h2>
                         <ul>
-                            @foreach ($articles->take(2) as $article)
+                            @if ($articles->count())
+                                @foreach ($articles->take(2) as $article)
+                                    <li class="item">
+                                        <div class="media">
+                                            <div class="media-left mr-3">
+                                                <a href="blog-details.html">
+                                                    <img loading="lazy"
+                                                        src="{{ asset('user') }}/images/artikel/artikel-home-1.png"
+                                                        alt="post-thumb" />
+                                                </a>
+                                            </div>
+                                            <div class="media-body">
+                                                <h5>
+                                                    <a
+                                                        href="/articles/article/{{ $article->id }}">{{ $article->title }}</a>
+                                                </h5>
+                                                <p>
+                                                    {!! Str::limit($article->body, 50) !!}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                @endforeach
+                            @else
                                 <li class="item">
-                                    <div class="media">
-                                        <div class="media-left mr-3">
-                                            <a href="blog-details.html">
-                                                <img loading="lazy"
-                                                    src="{{ asset('user') }}/images/artikel/artikel-home-1.png"
-                                                    alt="post-thumb" />
-                                            </a>
-                                        </div>
-                                        <div class="media-body">
-                                            <h5>
-                                                <a
-                                                    href="/articles/article/{{ $article->id }}">{{ $article->title }}</a>
-                                            </h5>
-                                            <p>
-                                                {{ Str::limit($article->body, 50) }}
-                                            </p>
-                                        </div>
-                                    </div>
+                                    <h6>No Article</h6>
                                 </li>
-                            @endforeach
+                            @endif
                         </ul>
                     </div>
                 </div>
@@ -105,13 +111,13 @@
             </div>
             <ul class="footer-bottom-link">
                 <li>
-                    <a href="index.html">Home</a>
+                    <a href="/home">Home</a>
                 </li>
                 <li>
-                    <a href="about.html">About</a>
+                    <a href="/about">About</a>
                 </li>
                 <li>
-                    <a href="contact.html">Contact</a>
+                    <a href="/contact">Contact</a>
                 </li>
             </ul>
         </div>
