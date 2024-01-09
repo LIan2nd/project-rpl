@@ -24,17 +24,18 @@
                             {{ $message }}
                         </div>
                     @enderror
-                    <label for="inputEmail" class="sr-only @error('email') is-invalid @enderror">Email</label>
-                    <input type="email" name="email" id="inputEmail" class="form-control main" placeholder="Email"
-                        required value="{{ old('email') }}">
+                    <label for="inputEmail" class="sr-only">Email</label>
+                    <input type="email" name="email" id="inputEmail"
+                        class="form-control main @error('email') is-invalid @enderror" placeholder="Email" required
+                        value="{{ old('email') }}">
                     @error('email')
                         <div class="invalid-feedback text-left">
                             {{ $message }}
                         </div>
                     @enderror
-                    <label for="inputPassword" class="sr-only @error('password') is-invalid @enderror">Password</label>
-                    <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password"
-                        required>
+                    <label for="inputPassword" class="sr-only">Password</label>
+                    <input type="password" name="password" id="inputPassword"
+                        class="form-control @error('password') is-invalid @enderror" placeholder="Password" required>
                     @error('password')
                         <div class="invalid-feedback text-left">
                             {{ $message }}
