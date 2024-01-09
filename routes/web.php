@@ -34,12 +34,18 @@ Route::group(['middleware' => 'guest'], function () {
     Route::post('/contributorRegister', [ContributorRegistrationController::class, 'store']);
 });
 
-Route::post('/logout', [LoginController::class, 'logout']);
 
 // Route Group Dashboard
 Route::group(['middleware' => 'auth'], function () {
     // Dashboard Route
     Route::get('/dashboard', [DashboardController::class, 'index']);
+
+    // Route aneh-anehh
+    Route::get('/logout', function () {
+        return view('etc.mauKemana');
+    });
+    // Logout Route
+    Route::post('/logout', [LoginController::class, 'logout']);
 });
 
 // Route Without Group
