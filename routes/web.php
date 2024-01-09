@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ContributorRegistrationController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ArticleController;
@@ -19,16 +20,43 @@ use App\Http\Controllers\InformationController;
 */
 
 // Web Routes
-Route::get('/home', function () {
-    return view('index', [
-        'title' => "Home"
-    ]);
+// Route with Controller
+// Route Group Login n Register
+Route::group(['middleware' => 'guest'], function () {
+    // Login Route
+    Route::get('/login', [LoginController::class, 'index'])->name('login');
+    Route::post('/login', [LoginController::class, 'authenticate']);
+
+    // Register Route
+    Route::get('/register', [RegisterController::class, 'index']);
+    Route::post('/register', [RegisterController::class, 'store']);
+    Route::get('/contributorRegister', [ContributorRegistrationController::class, 'index']);
+    Route::post('/contributorRegister', [ContributorRegistrationController::class, 'store']);
 });
+
+Route::post('/logout', [LoginController::class, 'logout']);
+
+// Route Group Dashboard
+Route::group(['middleware' => 'auth'], function () {
+    // Dashboard Route
+    Route::get('/dashboard', [DashboardController::class, 'index']);
+});
+
+// Route Without Group
 Route::get('/informations', [InformationController::class, 'index']);
 Route::get('/informations/information/{information:id}', [InformationController::class, 'show']);
 Route::get('/articles', [ArticleController::class, 'index']);
 Route::get('/articles/article/{article:id}', [ArticleController::class, 'show']);
 
+
+// Route with Controller End
+
+// Route Without Controller
+Route::get('/home', function () {
+    return view('index', [
+        'title' => "Home"
+    ]);
+});
 Route::get('/contact', function () {
     return view('contact', [
         'title' => "Contact"
@@ -39,13 +67,8 @@ Route::get('/about', function () {
         'title' => "About"
     ]);
 });
-Route::get('/login', [LoginController::class, 'index']);
 
-// Register Route
-Route::get('/register', [RegisterController::class, 'index']);
-Route::post('/register', [RegisterController::class, 'store']);
-Route::get('/contributorRegister', [ContributorRegistrationController::class, 'index']);
-Route::post('/contributorRegister', [ContributorRegistrationController::class, 'store']);
+
 
 
 
@@ -66,8 +89,4 @@ Route::post('/contributorRegister', [ContributorRegistrationController::class, '
 
 Route::get('/', function () {
     return view('welcome');
-});
-
-Route::get('/ikeh', function () {
-    return view('dashboard.index');
 });

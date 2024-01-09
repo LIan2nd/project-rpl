@@ -25,11 +25,35 @@
                     <a class="nav-link" href="/about">About</a>
                 </li>
             </ul>
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item {{ Request::is('login') ? 'active' : '' }}">
-                    <a href="/login" class="nav-link">Login</a>
-                </li>
-            </ul>
+
+            @auth
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item dropdown ">
+                        <a class="nav-link dropdown-toggle" href="#!" id="navbarDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">{{ Auth::user()->username }}</a>
+
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="/dashboard">Dashboard</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li>
+                                <form action="/logout" method="POST">
+                                    @csrf
+                                    <button type="submit" class="dropdown-item">Logout</button>
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            @else
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item {{ Request::is('login') ? 'active' : '' }}">
+                        <a href="/login" class="nav-link">Login</a>
+                    </li>
+                </ul>
+            @endauth
         </div>
     </div>
 </nav>

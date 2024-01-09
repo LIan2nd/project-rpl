@@ -70,7 +70,7 @@
                         <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="/">
+                        <a class="dropdown-item" href="/home">
                             <i class='bx bxs-widget me-2'></i>
                             <span class="align-middle">Back to Landing Page</span>
                         </a>
