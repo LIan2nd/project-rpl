@@ -43,7 +43,9 @@
                                 <i class="fas fa-clock"></i>{{ $information->time }}
                             </li>
                         </ul>
-                        <a href="appointment.html" class="btn btn-style-one">Register</a>
+                        @auth
+                            <a href="appointment.html" class="btn btn-style-one">Register</a>
+                        @endauth
                     </div>
                 </div>
                 <div class="col-lg-6">

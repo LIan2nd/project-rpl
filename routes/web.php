@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AdminInformationController;
+use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\ContributorRegistrationController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
@@ -39,13 +41,18 @@ Route::group(['middleware' => 'guest'], function () {
 Route::group(['middleware' => 'auth'], function () {
     // Dashboard Route
     Route::get('/dashboard', [DashboardController::class, 'index']);
-
     // Route aneh-anehh
     Route::get('/logout', function () {
         return view('etc.mauKemana');
     });
     // Logout Route
     Route::post('/logout', [LoginController::class, 'logout']);
+
+    // Dashboard Route
+    Route::get('/dashboard/admin/informations', [AdminInformationController::class, 'index']);
+    Route::delete('/dashboard/admin/informations/{information:id}', [AdminInformationController::class, 'destroy']);
+    Route::get('/dashboard/admin/users', [AdminUserController::class, 'index']);
+    Route::post('/dashboard/admin/users/validate/{user:id}', [AdminUserController::class, 'contValidate']);
 });
 
 // Route Without Group

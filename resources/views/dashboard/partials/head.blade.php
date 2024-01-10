@@ -13,7 +13,7 @@
             Informations
         @elseif (Request::is('dashboard/informations/create'))
             Create Information
-        @elseif (Request::is('dashboard/admin/events'))
+        @elseif (Request::is('dashboard/admin/informations'))
             Events
         @elseif (Request::is('dashboard/admin/categories'))
             Categories

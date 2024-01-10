@@ -30,18 +30,19 @@
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item dropdown ">
                         <a class="nav-link dropdown-toggle" href="#!" id="navbarDropdown" role="button"
-                            data-toggle="dropdown" aria-haspopup="true"
-                            aria-expanded="false">{{ Auth::user()->username }}</a>
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user"></i>
+                            {{ Auth::user()->username }}</a>
 
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="/dashboard">Dashboard</a></li>
+                            <li><a class="dropdown-item" href="/dashboard"><i class="fas fa-columns"></i> Dashboard</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
                             <li>
                                 <form action="/logout" method="POST">
                                     @csrf
-                                    <button type="submit" class="dropdown-item">Logout</button>
+                                    <button type="submit" class="dropdown-item"><i class="fas fa-sign-out-alt"></i>
+                                        Logout</button>
                                 </form>
                             </li>
                         </ul>
@@ -49,8 +50,8 @@
                 </ul>
             @else
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item {{ Request::is('login') ? 'active' : '' }}">
-                        <a href="/login" class="nav-link">Login</a>
+                    <li class="nav-item">
+                        <a href="/login" class="nav-link"><i class="fas fa-sign-in-alt"></i> Login</a>
                     </li>
                 </ul>
             @endauth

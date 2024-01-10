@@ -25,7 +25,9 @@
                     </button>
                 @elseif(Auth::user()->role_id == 2)
                     <button type="button" class="btn btn-outline-warning">
-                        <i class='bx bxs-user-plus'></i>&nbsp; {{ Auth::user()->role->name }}
+                        <i class='bx bxs-user-plus'></i>&nbsp; {{ Auth::user()->role->name }} @if (Auth::user()->contributor == 'true')
+                            <i class='bx bxs-badge-check'></i>
+                        @endif
                     </button>
                 @elseif(Auth::user()->role_id == 3)
                     <button type="button" class="btn btn-outline-primary">
