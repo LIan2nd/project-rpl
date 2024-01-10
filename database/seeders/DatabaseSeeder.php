@@ -6,6 +6,7 @@ namespace Database\Seeders;
 use App\Models\Article;
 use App\Models\Category;
 use App\Models\Information;
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -43,5 +44,15 @@ class DatabaseSeeder extends Seeder
         User::factory(5)->create();
         Article::factory(3)->create();
         Information::factory(5)->create();
+
+        Role::create([
+            'name' => 'Common'
+        ]);
+        Role::create([
+            'name' => 'Contributor'
+        ]);
+        Role::create([
+            'name' => 'Admin'
+        ]);
     }
 }

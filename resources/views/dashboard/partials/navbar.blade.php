@@ -18,18 +18,20 @@
         <!-- /Search -->
 
         <ul class="navbar-nav flex-row align-items-center ms-auto">
-            <li class="nav-item lh-1 me-3"><button type="button" class="btn btn-outline-secondary">
-                    <i class='bx bx-user'></i>&nbsp; Admin
-                </button>
-                {{-- @if (Auth::user()->role_id == 2)
+            <li class="nav-item lh-1 me-3">
+                @if (Auth::user()->role_id == 1)
                     <button type="button" class="btn btn-outline-secondary">
                         <i class='bx bx-user'></i>&nbsp; {{ Auth::user()->role->name }}
+                    </button>
+                @elseif(Auth::user()->role_id == 2)
+                    <button type="button" class="btn btn-outline-warning">
+                        <i class='bx bxs-user-plus'></i>&nbsp; {{ Auth::user()->role->name }}
                     </button>
                 @elseif(Auth::user()->role_id == 3)
                     <button type="button" class="btn btn-outline-primary">
                         <i class='bx bxs-user-plus'></i>&nbsp; {{ Auth::user()->role->name }}
                     </button>
-                @endif --}}
+                @endif
             </li>
 
             <!-- User -->
@@ -51,8 +53,8 @@
                                     </div>
                                 </div>
                                 <div class="flex-grow-1">
-                                    <span class="fw-semibold d-block">{{-- Auth::user()->name --}}Admin</span>
-                                    <small class="text-muted">{{-- Auth::user()->username --}} user Admin</small>
+                                    <span class="fw-semibold d-block">{{ Auth::user()->name }}</span>
+                                    <small class="text-muted">{{ Auth::user()->username }}</small>
                                 </div>
                             </div>
                         </a>

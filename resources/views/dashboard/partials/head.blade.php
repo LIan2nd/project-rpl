@@ -7,12 +7,12 @@
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-    {{-- <title>{{ config('app.name', 'Laravel') }} | @if (Request::is('dashboard'))
+    <title>{{ config('app.name', 'Dashboard Sobat Sehat') }} | @if (Request::is('dashboard'))
             Dashboard
-        @elseif (Request::is('dashboard/events'))
-            Events
-        @elseif (Request::is('dashboard/events/create'))
-            Create Event
+        @elseif (Request::is('dashboard/informations'))
+            Informations
+        @elseif (Request::is('dashboard/informations/create'))
+            Create Information
         @elseif (Request::is('dashboard/admin/events'))
             Events
         @elseif (Request::is('dashboard/admin/categories'))
@@ -25,7 +25,7 @@
             Create Category
         @else
             {{ $title }}
-        @endif --}} Dashboard Admin
+        @endif
     </title>
 
     <meta name="description" content="" />
