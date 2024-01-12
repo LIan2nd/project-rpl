@@ -11,7 +11,7 @@ class AdminUserController extends Controller
     public function index()
     {
         return view('dashboard.admin.users.index', [
-            'users' => User::all()
+            'users' => User::orderBy('role_id', 'desc')->filter(request(['search']))->get()
         ]);
     }
 

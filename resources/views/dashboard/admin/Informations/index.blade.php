@@ -1,3 +1,7 @@
+@php
+    use Illuminate\Support\Carbon;
+@endphp
+
 @extends('dashboard.layouts.main')
 @section('content')
     <div class="container-xxl flex-grow-1 container-p-y">
@@ -64,7 +68,7 @@
                                         {{ $information->location }}
                                     </td>
                                     <td>
-                                        {{ $information->date }}
+                                        {{ Carbon::parse($information->date)->format('d F Y') }}
                                     </td>
                                     <td>
                                         {{ $information->time }}
@@ -94,7 +98,7 @@
                     <div class="card shadow-none bg-transparent border border-info text-center mb-3">
                         <div class="card-body">
                             <h5 class="card-title text-info">Ooppss!!</h5>
-                            <p class="card-text">No <strong>Event</strong>.</p>
+                            <p class="card-text">No <strong>Event Information</strong>.</p>
                         </div>
                     </div>
                 </div>

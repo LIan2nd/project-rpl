@@ -47,7 +47,7 @@
                                             / {{ Carbon::parse($article->published_at)->format('d F Y') }} - in <a
                                                 href="/articles?category={{ $article->category->slug }}">{{ $article->category->name }}</a></span>
                                         <p>
-                                            {!! Str::limit($article->body, 200) !!}
+                                            {{ mb_strimwidth($article->body, 0, 200) }}
                                         </p>
                                         <div class="link-btn">
                                             <a href="/articles/article/{{ $article->id }}" class="btn-style-one">read
@@ -58,8 +58,7 @@
                             @endforeach
 
                             {{-- <div class="styled-pagination"> --}}
-                            <div class="mt-5">
-                                {{-- <ul>
+                            {{-- <ul>
                                     <li>
                                         <a class="prev" href="blog.html"><span class="fas fa-angle-left"
                                                 aria-hidden="true"></span></a>
@@ -72,6 +71,7 @@
                                                 aria-hidden="true"></span></a>
                                     </li>
                                 </ul> --}}
+                            <div class="mt-5">
                                 {{ $articles->links() }}
                             </div>
                         @else

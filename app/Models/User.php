@@ -25,10 +25,29 @@ class User extends Authenticatable
         'email',
         'password',
     ];
+    public function scopeFilter($query, array $filters)
+    {
+        $query->when(
+            $filters['search'] ?? false,
+            fn($query, $search) => $query->where('name', 'like', '%' . $search . '%')
+        );
+    }
+
+    // protected $with = ['role', 'registration', 'articles'];
+
+    public function articles()
+    {
+        return $this->hasMany(Article::class);
+    }
 
     public function role()
     {
         return $this->belongsTo(Role::class);
+    }
+
+    public function registration()
+    {
+        return $this->hasMany(Registration::class);
     }
 
     /**

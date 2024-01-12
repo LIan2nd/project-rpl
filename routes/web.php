@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminInformationController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\ContributorRegistrationController;
+use App\Http\Controllers\DashboardArticleController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
@@ -41,10 +42,12 @@ Route::group(['middleware' => 'guest'], function () {
 Route::group(['middleware' => 'auth'], function () {
     // Dashboard Route
     Route::get('/dashboard', [DashboardController::class, 'index']);
+
     // Route aneh-anehh
     Route::get('/logout', function () {
         return view('etc.mauKemana');
     });
+
     // Logout Route
     Route::post('/logout', [LoginController::class, 'logout']);
 
@@ -53,6 +56,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::delete('/dashboard/admin/informations/{information:id}', [AdminInformationController::class, 'destroy']);
     Route::get('/dashboard/admin/users', [AdminUserController::class, 'index']);
     Route::post('/dashboard/admin/users/validate/{user:id}', [AdminUserController::class, 'contValidate']);
+
+    // Articles Dashboard Route
+    Route::resource('/dashboard/articles', DashboardArticleController::class);
 });
 
 // Route Without Group
@@ -101,5 +107,5 @@ Route::get('/about', function () {
 // batas tidak terpakai
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('start');
 });

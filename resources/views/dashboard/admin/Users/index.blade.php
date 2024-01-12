@@ -55,7 +55,7 @@
                                     <td>{{ $user->name }}</td>
                                     <td>
                                         @if ($user->role_id == 1)
-                                            <button class="btn btn-secondary" style="min-width: 150px">
+                                            <button class="btn btn-secondary" style="min-width: 150px; cursor: default;">
                                                 <span class="badge me-2">{{ $user->role->name }}</span>
                                             </button>
                                         @elseif($user->role_id == 2 && $user->contributor == 'false')
@@ -71,11 +71,11 @@
                                                         class="badge me-2">{{ $user->role->name }}</span></button>
                                             </form>
                                         @elseif($user->role_id == 2)
-                                            <button class="btn btn-success" style="min-width: 150px">
+                                            <button class="btn btn-success" style="min-width: 150px; cursor: default;">
                                                 <span class="badge me-2">{{ $user->role->name }}</span>
                                             </button>
                                         @elseif($user->role_id == 3)
-                                            <button class="btn btn-primary" style="min-width: 150px">
+                                            <button class="btn btn-primary" style="min-width: 150px; cursor: default;">
                                                 <span class="badge me-2">{{ $user->role->name }}</span>
                                             </button>
                                         @endif

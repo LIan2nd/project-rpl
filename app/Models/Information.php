@@ -19,4 +19,9 @@ class Information extends Model
                 ->orWhere('description', 'like', '%' . $search . '%')
         );
     }
+
+    public function registrations()
+    {
+        return $this->hasMany(Registration::class);
+    }
 }

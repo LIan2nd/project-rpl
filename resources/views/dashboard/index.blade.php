@@ -12,7 +12,7 @@
                                     Let's create an <span class="fw-bold">Information</span> easly with us
                                 </p>
 
-                                <a href="/dashboard/informations" class="btn btn-sm btn-outline-primary">View All
+                                <a href="/dashboard/admin/informations" class="btn btn-sm btn-outline-primary">View All
                                     Information</a>
                             </div>
                         </div>

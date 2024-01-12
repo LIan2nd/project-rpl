@@ -32,6 +32,15 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('admin123')
         ]);
 
+        User::create([
+            'name' => 'unValidateContributor',
+            'username' => 'otwvalidatecontributor',
+            'contributor' => 'false',
+            'role_id' => 2,
+            'email' => 'cont@gmail.com',
+            'password' => bcrypt('contributor')
+        ]);
+
         Category::create([
             'name' => 'Olahraga',
             'slug' => 'olagraga'

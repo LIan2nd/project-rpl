@@ -13,7 +13,7 @@ class AdminInformationController extends Controller
     public function index()
     {
         return view('dashboard.admin.Informations.index', [
-            'informations' => Information::all()
+            'informations' => Information::latest()->filter(request(['search']))->get()
         ]);
     }
 

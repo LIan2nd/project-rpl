@@ -31,8 +31,8 @@
                     <div class="item-holder">
                         <div class="image-box">
                             <figure>
-                                <a href="single-blog.html"><img loading="lazy" class="img-fluid"
-                                        src="{{ asset('user') }}/images/artikel/artikel2.png" alt="" /></a>
+                                <img loading="lazy" class="img-fluid" src="{{ asset('user') }}/images/artikel/artikel2.png"
+                                    alt="" />
                             </figure>
                         </div>
                         <div class="content-text">
@@ -45,6 +45,7 @@
                                     href="/articles?category={{ $article->category->slug }}">{{ $article->category->name }}</a></span>
                             <p>
                                 {!! $article->body !!}
+                                {{-- {{ $article->body }} --}}
                             </p>
                         </div>
                     </div>
@@ -63,7 +64,7 @@
                             <div class="image-text">
                                 <h6>Jacky Chan<span>Mei 26, 2023</span></h6>
                                 <h5>
-                                    <a href="blog-details.html">
+                                    <a href="#">
                                         <i class="fa fa-reply-all" aria-hidden="true"></i>Comment Back
                                     </a>
                                 </h5>
@@ -81,7 +82,7 @@
                             <div class="image-text">
                                 <h6>Robben Oti<span>Mei 27, 2023</span></h6>
                                 <h5>
-                                    <a href="article">
+                                    <a href="#">
                                         <i class="fa fa-reply-all" aria-hidden="true"></i>Comment Back
                                     </a>
                                 </h5>
@@ -99,7 +100,7 @@
                             <div class="image-text">
                                 <h6>Chang Lingma<span>Mei 26, 2023</span></h6>
                                 <h5>
-                                    <a href="article">
+                                    <a href="#">
                                         <i class="fa fa-reply-all" aria-hidden="true"></i>Comment Back
                                     </a>
                                 </h5>

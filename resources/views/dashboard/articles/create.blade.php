@@ -7,9 +7,9 @@
                     <div class="d-flex align-items-end row">
                         <div class="col-sm-7">
                             <div class="card-body">
-                                <h5 class="card-title text-primary">Lord, {{ Auth::user()->name }}</h5>
+                                <h5 class="card-title text-primary">Lord, {{ Auth::user()->username }}</h5>
                                 <p class="mb-4">
-                                    Let's Create Your <span class="fw-bold">Event!</span>
+                                    Let's Create Your <span class="fw-bold">Article!</span>
                                 </p>
                             </div>
                         </div>
@@ -31,29 +31,19 @@
                     <div class="col-xl">
                         <div class="card mb-4">
                             <div class="card-header d-flex justify-content-between align-items-center">
-                                <h5 class="mb-0">New event</h5>
+                                <h5 class="mb-0">New Article</h5>
                                 <small class="text-muted float-end">Create with Love <i class='bx bxs-skull'></i></small>
                             </div>
                             <div class="card-body">
-                                <form method="POST" action="/dashboard/events" enctype="multipart/form-data">
+                                <form method="POST" action="/dashboard/articles" enctype="multipart/form-data">
                                     @csrf
                                     <div class="mb-3">
-                                        <label class="form-label" for="name">Name</label>
-                                        <input type="text" name="name"
-                                            class="form-control @error('name') is-invalid @enderror" id="name"
-                                            placeholder="Your Event name" value="{{ OLD('name') }}" required autofocus />
-                                        @error('name')
-                                            <div class="form-text text-danger">
-                                                {{ $message }}
-                                            </div>
-                                        @enderror
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="form-label" for="date">Date</label>
-                                        <input type="date" name="date"
-                                            class="form-control @error('date') is-invalid @enderror" id="date"
-                                            placeholder="Your Event date" value="{{ OLD('date') }}" required autofocus />
-                                        @error('date')
+                                        <label class="form-label" for="title">Title</label>
+                                        <input type="text" name="title"
+                                            class="form-control @error('title') is-invalid @enderror" id="title"
+                                            placeholder="Your Article title" value="{{ OLD('title') }}" required
+                                            autofocus />
+                                        @error('title')
                                             <div class="form-text text-danger">
                                                 {{ $message }}
                                             </div>
@@ -70,7 +60,7 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                    <div class="mb-3">
+                                    {{-- <div class="mb-3">
                                         <label for="image" class="form-label @error('image') is-invalid @enderror">Event
                                             Image</label>
                                         <img class="img-preview img-fluid mb-2 col-sm-8">
@@ -86,21 +76,21 @@
                                         <div id="defaultFormControlHelp" class="form-text mt-2">
                                             Optional | max 5MB
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     <div class="mb-3">
-                                        <label for="description" class="form-label">Description</label>
-                                        @error('description')
+                                        <label for="body" class="form-label">Body</label>
+                                        @error('body')
                                             <div class="alert alert-danger alert-dismissible" role="alert">
                                                 {{ $message }}
                                                 <button type="button" class="btn-close" data-bs-dismiss="alert"
                                                     aria-label="Close"></button>
                                             </div>
                                         @enderror
-                                        <input id="description" type="hidden" name="description"
-                                            value="{{ OLD('description') }}" required>
-                                        <trix-editor input="description"></trix-editor>
+                                        <input id="body" type="hidden" name="body" value="{{ OLD('body') }}"
+                                            required>
+                                        <trix-editor input="body"></trix-editor>
                                     </div>
-                                    <button type="submit" class="btn btn-primary">Create Event</button>
+                                    <button type="submit" class="btn btn-primary">Create an Article</button>
                                 </form>
                             </div>
                         </div>

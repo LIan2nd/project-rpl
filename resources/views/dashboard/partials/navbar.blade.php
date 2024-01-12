@@ -7,15 +7,43 @@
     </div>
 
     <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
-        <!-- Search -->
-        <div class="navbar-nav align-items-center">
-            <div class="nav-item d-flex align-items-center">
-                <i class="bx bx-search fs-4 lh-0"></i>
-                <input type="text" class="form-control border-0 shadow-none" placeholder="Search..."
-                    aria-label="Search..." />
-            </div>
-        </div>
-        <!-- /Search -->
+        @if (Request::is('dashboard/articles'))
+            <!-- Search -->
+            <form action="/dashboard/articles" role="search">
+                <div class="navbar-nav align-items-center">
+                    <div class="nav-item d-flex align-items-center">
+                        <i class="bx bx-search fs-4 lh-0"></i>
+                        <input type="search" name="search" value="{{ request('search') }}"
+                            class="form-control border-0 shadow-none" placeholder="Search..." aria-label="Search..." />
+                    </div>
+                </div>
+            </form>
+            <!-- /Search -->
+        @elseif(Request::is('dashboard/admin/informations'))
+            <!-- Search -->
+            <form action="/dashboard/admin/informations" role="search">
+                <div class="navbar-nav align-items-center">
+                    <div class="nav-item d-flex align-items-center">
+                        <i class="bx bx-search fs-4 lh-0"></i>
+                        <input type="search" name="search" value="{{ request('search') }}"
+                            class="form-control border-0 shadow-none" placeholder="Search..." aria-label="Search..." />
+                    </div>
+                </div>
+            </form>
+            <!-- /Search -->
+        @elseif(Request::is('dashboard/admin/users'))
+            <!-- Search -->
+            <form action="/dashboard/admin/users" role="search">
+                <div class="navbar-nav align-items-center">
+                    <div class="nav-item d-flex align-items-center">
+                        <i class="bx bx-search fs-4 lh-0"></i>
+                        <input type="search" name="search" value="{{ request('search') }}"
+                            class="form-control border-0 shadow-none" placeholder="Search..." aria-label="Search..." />
+                    </div>
+                </div>
+            </form>
+            <!-- /Search -->
+        @endif
 
         <ul class="navbar-nav flex-row align-items-center ms-auto">
             <li class="nav-item lh-1 me-3">
@@ -80,15 +108,15 @@
                         </a>
                     </li>
                     <li>
-                        {{-- <a class="dropdown-item" href="{{ route('logout') }}"
+                        <a class="dropdown-item" href="/logout"
                             onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();">
                             <i class="bx bx-power-off me-2"></i>
                             <span class="align-middle">Log Out</span>
                         </a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        <form id="logout-form" action="/logout" method="POST" class="d-none">
                             @csrf
-                        </form> --}}
+                        </form>
                     </li>
                 </ul>
             </li>

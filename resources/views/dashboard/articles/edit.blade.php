@@ -7,9 +7,9 @@
                     <div class="d-flex align-items-end row">
                         <div class="col-sm-7">
                             <div class="card-body">
-                                <h5 class="card-title text-primary">Lord, {{ Auth::user()->name }}</h5>
+                                <h5 class="card-title text-primary">Lord, {{ Auth::user()->username }}</h5>
                                 <p class="mb-4">
-                                    Edit Your <span class="fw-bold">Event!</span>
+                                    Edit Your <span class="fw-bold">Article!</span>
                                 </p>
                             </div>
                         </div>
@@ -31,33 +31,21 @@
                     <div class="col-xl">
                         <div class="card mb-4">
                             <div class="card-header d-flex justify-content-between align-items-center">
-                                <h5 class="mb-0">Edit event</h5>
+                                <h5 class="mb-0">Edit Article</h5>
                                 <small class="text-muted float-end">Created with Love <i class='bx bxs-skull'></i></small>
                             </div>
                             <div class="card-body">
-                                <form method="POST" action="/dashboard/events/{{ $event->slug }}"
+                                <form method="POST" action="/dashboard/articles/{{ $article->id }}"
                                     enctype="multipart/form-data">
                                     @csrf
                                     @method('PUT')
                                     <div class="mb-3">
-                                        <label class="form-label" for="name">Name</label>
-                                        <input type="text" name="name"
-                                            class="form-control @error('name') is-invalid @enderror" id="name"
-                                            placeholder="Your Event name" value="{{ OLD('name', $event->name) }}" required
-                                            autofocus />
-                                        @error('name')
-                                            <div class="form-text text-danger">
-                                                {{ $message }}
-                                            </div>
-                                        @enderror
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="form-label" for="date">Date</label>
-                                        <input type="date" name="date"
-                                            class="form-control @error('date') is-invalid @enderror" id="date"
-                                            placeholder="Your Event date" value="{{ OLD('date', $event->date) }}" required
-                                            autofocus />
-                                        @error('date')
+                                        <label class="form-label" for="title">Title</label>
+                                        <input type="text" name="title"
+                                            class="form-control @error('title') is-invalid @enderror" id="title"
+                                            placeholder="Your Article title" value="{{ OLD('title', $article->title) }}"
+                                            required autofocus />
+                                        @error('title')
                                             <div class="form-text text-danger">
                                                 {{ $message }}
                                             </div>
@@ -68,22 +56,16 @@
                                         <select class="form-select" name="category_id" id="category_id">
                                             @foreach ($categories as $category)
                                                 <option value="{{ $category->id }}"
-                                                    {{ old('category_id', $event->category->id) == $category->id ? 'selected' : '' }}>
+                                                    {{ old('category_id', $article->category->id) == $category->id ? 'selected' : '' }}>
                                                     {{ $category->name }}
                                                 </option>
                                             @endforeach
                                         </select>
                                     </div>
-                                    <div class="mb-3">
+                                    {{-- <div class="mb-3">
                                         <label for="image" class="form-label @error('image') is-invalid @enderror">Event
                                             Image</label>
-                                        <input type="hidden" name="oldImage" value="{{ $event->image }}">
-                                        @if ($event->image)
-                                            <img src="{{ asset('storage/' . $event->image) }}"
-                                                class="img-preview img-fluid mb-2 col-sm-8 d-block">
-                                        @else
-                                            <img class="img-preview img-fluid mb-2 col-sm-8">
-                                        @endif
+                                        <img class="img-preview img-fluid mb-2 col-sm-8">
                                         <div class="input-group">
                                             <input type="file" class="form-control" id="image" name="image"
                                                 onchange="previewImage()" />
@@ -96,21 +78,21 @@
                                         <div id="defaultFormControlHelp" class="form-text mt-2">
                                             Optional | max 5MB
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     <div class="mb-3">
-                                        <label for="description" class="form-label">Description</label>
-                                        @error('description')
+                                        <label for="body" class="form-label">Body</label>
+                                        @error('body')
                                             <div class="alert alert-danger alert-dismissible" role="alert">
                                                 {{ $message }}
                                                 <button type="button" class="btn-close" data-bs-dismiss="alert"
                                                     aria-label="Close"></button>
                                             </div>
                                         @enderror
-                                        <input id="description" type="hidden" name="description"
-                                            value="{{ OLD('description', $event->description) }}" required>
-                                        <trix-editor input="description"></trix-editor>
+                                        <input id="body" type="hidden" name="body"
+                                            value="{{ OLD('body', $article->body) }}" required>
+                                        <trix-editor input="body"></trix-editor>
                                     </div>
-                                    <button type="submit" class="btn btn-primary">Edit Event</button>
+                                    <button type="submit" class="btn btn-primary">Edit Article</button>
                                 </form>
                             </div>
                         </div>

@@ -15,8 +15,8 @@
             Create Information
         @elseif (Request::is('dashboard/admin/informations'))
             Events
-        @elseif (Request::is('dashboard/admin/categories'))
-            Categories
+        @elseif (Request::is('dashboard/articles*'))
+            Articles
         @elseif (Request::is('dashboard/admin/users'))
             Users
         @elseif (Request::is('dashboard/admin/subscriptions'))

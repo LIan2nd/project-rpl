@@ -71,25 +71,24 @@
                 <div data-i18n="Support">Article</div>
             </a>
         </li>
-        @if (Auth::user()->role->id == 2 || Auth::user()->role->id == 3)
+        @if ((Auth::user()->role->id == 2 && Auth::user()->contributor == 'true') || Auth::user()->role->id == 3)
             <li class="menu-header small text-uppercase"><span class="menu-header-text">Administrator &
                     Contributor</span></li>
-            @if ((Auth::user()->role->id == 2 && Auth::user()->contributor == 'true') || Auth::user()->role->id == 3)
-                <li class="menu-item {{ Request::is('dashboard/admin/informations') ? 'active' : '' }}">
-                    <a href="/dashboard/admin/informations" class="menu-link">
-                        <i class="menu-icon tf-icons bx bx-news"></i>
-                        <div data-i18n="Support">Informations</div>
-                    </a>
-                </li>
-            @endif
-            @if (Auth::user()->role->id == 3)
-                <li class="menu-item {{ Request::is('dashboard/admin/users*') ? 'active' : '' }}">
-                    <a href="/dashboard/admin/users" class="menu-link">
-                        <i class="menu-icon tf-icons bx bxs-user-detail"></i>
-                        <div data-i18n="Support">Users</div>
-                    </a>
-                </li>
-                {{-- <li class="menu-item {{ Request::is('dashboard/admin/categories*') ? 'active' : '' }}">
+            <li class="menu-item {{ Request::is('dashboard/admin/informations') ? 'active' : '' }}">
+                <a href="/dashboard/admin/informations" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-news"></i>
+                    <div data-i18n="Support">Informations</div>
+                </a>
+            </li>
+        @endif
+        @if (Auth::user()->role->id == 3)
+            <li class="menu-item {{ Request::is('dashboard/admin/users*') ? 'active' : '' }}">
+                <a href="/dashboard/admin/users" class="menu-link">
+                    <i class="menu-icon tf-icons bx bxs-user-detail"></i>
+                    <div data-i18n="Support">Users</div>
+                </a>
+            </li>
+            {{-- <li class="menu-item {{ Request::is('dashboard/admin/categories*') ? 'active' : '' }}">
                     <a href="/dashboard/admin/categories" class="menu-link">
                         <i class="menu-icon tf-icons bx bx-category"></i>
                         <div data-i18n="Support">Categories</div>
@@ -101,7 +100,6 @@
                         <div data-i18n="Support">Subscriptions</div>
                     </a>
                 </li> --}}
-            @endif
         @endif
     </ul>
 </aside>
