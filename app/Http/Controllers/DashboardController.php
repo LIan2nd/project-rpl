@@ -12,7 +12,8 @@ class DashboardController extends Controller
     {
         return view('dashboard.index', [
             'title' => 'Main',
-            'articles' => Article::all()
+            'articles' => Article::all(),
+            'informations' => Information::all()
         ]);
     }
 }

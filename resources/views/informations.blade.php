@@ -52,54 +52,60 @@
                         <div class="item">
                             <div class="inner-box">
                                 <div class="img_holder">
-                                    <a href="/informations/information/{{ $informations[0]->id }}">
+                                    <a href="/informations/information/{{ $informations[0]->slug }}">
                                         <img loading="lazy" src="{{ asset('user') }}/images/information/info-1.png"
                                             alt="images" class="img-fluid">
                                     </a>
                                 </div>
                                 <div class="image-content text-center">
-                                    <span>{{ $informations[0]->location }} at
+                                    <span><i class="fas fa-thumbtack"></i>&nbsp;{{ $informations[0]->location }} at
                                         {{ Carbon::parse($informations[0]->date)->format('d F Y') }}</span>
-                                    <a href="/informations/information/{{ $informations[0]->id }}">
+                                    <a href="/informations/information/{{ $informations[0]->slug }}">
                                         <h6>{{ $informations[0]->name }}</h6>
                                     </a>
-                                    <p>{!! Str::limit($informations[0]->description, 55) !!} <a
-                                            href="/informations/information/{{ $informations[0]->id }}">read more</a></p>
+                                    <p>{!! Str::limit($informations[0]->description, 55) !!} @if (str_contains($informations[0]->description, '<div>'))
                                 </div>
-                            </div>
+            @endif <a href="/informations/information/{{ $informations[0]->slug }}"> read more</a></p>
+        </div>
+        </div>
+        </div>
+        </div>
+        @foreach ($informations->skip(1) as $information)
+            <div class="col-lg-4 mt-5">
+                <div class="item">
+                    <div class="inner-box">
+                        <div class="img_holder">
+                            <a href="/informations/information/{{ $information->slug }}">
+                                <img loading="lazy" src="{{ asset('user') }}/images/information/info-1.png" alt="images"
+                                    class="img-fluid">
+                            </a>
+                        </div>
+                        <div class="image-content text-center">
+                            <span><i class="fas fa-thumbtack"></i>&nbsp;{{ $information->location }} at
+                                {{ Carbon::parse($information->date)->format('d F Y') }}</span>
+                            <a href="/informations/information/{{ $information->slug }}">
+                                <h6>{{ $information->name }}</h6>
+                            </a>
+                            <p>{!! Str::limit($information->description, 55) !!} <a href="/informations/information/{{ $information->slug }}">read
+                                    more</a></p>
                         </div>
                     </div>
-                    @foreach ($informations->skip(1) as $information)
-                        <div class="col-lg-4 mt-5">
-                            <div class="item">
-                                <div class="inner-box">
-                                    <div class="img_holder">
-                                        <a href="/informations/information/{{ $information->id }}">
-                                            <img loading="lazy" src="{{ asset('user') }}/images/information/info-1.png"
-                                                alt="images" class="img-fluid">
-                                        </a>
-                                    </div>
-                                    <div class="image-content text-center">
-                                        <span>{{ $information->location }} at
-                                            {{ Carbon::parse($information->date)->format('d F Y') }}</span>
-                                        <a href="/informations/information/{{ $information->id }}">
-                                            <h6>{{ $information->name }}</h6>
-                                        </a>
-                                        <p>{!! Str::limit($information->description, 55) !!} <a
-                                                href="/informations/information/{{ $information->id }}">read more</a></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
                 </div>
-            @else
-                <div class="row">
-                    <div class="col-lg-12 mt-5">
-                        <p>Event are not yet available</p>
-                    </div>
-                </div>
-            @endif
+            </div>
+        @endforeach
+        <div class="styled-pagination">
+            <div class="mt-5">
+                {{ $informations->links() }}
+            </div>
+        </div>
+        </div>
+    @else
+        <div class="row">
+            <div class="col-lg-12 mt-5">
+                <p>Event are not yet available</p>
+            </div>
+        </div>
+        @endif
         </div>
     </section>
 @endsection

@@ -9,7 +9,7 @@
                             <div class="card-body">
                                 <h5 class="card-title text-primary">Lord, {{ Auth::user()->name }}</h5>
                                 <p class="mb-4">
-                                    Let's Create Your <span class="fw-bold">Event!</span>
+                                    Let's create new <span class="fw-bold">Category!</span>
                                 </p>
                             </div>
                         </div>

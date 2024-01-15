@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Information;
+use Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class AdminInformationController extends Controller
 {
@@ -22,7 +25,7 @@ class AdminInformationController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.admin.informations.create');
     }
 
     /**
@@ -30,7 +33,22 @@ class AdminInformationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        if (Gate::allows('admNCont')) {
+            $validatedData = $request->validate([
+                'name' => 'required|max:255|min:3',
+                'description' => 'required|min:3',
+                'location' => 'required|min:3',
+                'date' => 'required|date',
+                'time' => 'required'
+            ]);
+
+            $validatedData['owner'] = Auth::user()->name;
+            Information::create($validatedData);
+            return redirect()->route('informations.index')->with('create', 'Information created successfully!');
+            // return redirect('/dashboard/admin/informations');
+        }
+        abort(403);
     }
 
     /**
@@ -38,7 +56,10 @@ class AdminInformationController extends Controller
      */
     public function show(Information $information)
     {
-        //
+        return view('dashboard.admin.Informations.show', [
+            'title' => 'Information Detail',
+            'information' => $information
+        ]);
     }
 
     /**
@@ -46,7 +67,10 @@ class AdminInformationController extends Controller
      */
     public function edit(Information $information)
     {
-        //
+        return view('dashboard.admin.Informations.edit', [
+            'title' => 'Edit Information Information',
+            'information' => $information,
+        ]);
     }
 
     /**
@@ -54,7 +78,29 @@ class AdminInformationController extends Controller
      */
     public function update(Request $request, Information $information)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required|max:255|min:3',
+            'description' => 'required|min:3',
+            'location' => 'required|min:3',
+            'date' => 'required|date',
+            'time' => 'required'
+        ]);
+
+        $validatedData['user_id'] = Auth::user()->id;
+        $validatedData['last_edited'] = now();
+        $validatedData['slug'] = SlugService::createSlug(Information::class, 'slug', $request->name);
+        if (Information::where('slug', $validatedData['slug'])->where('id', '!=', $information->id)->exists()) {
+            $uniqueSlug = $validatedData['slug'];
+            $counter = 1;
+            while (Information::where('slug', $uniqueSlug)->where('id', '!=', $information->id)->exists()) {
+                $uniqueSlug = $validatedData['slug'] . '-' . $counter;
+                $counter++;
+            }
+            $validatedData['slug'] = $uniqueSlug;
+        }
+
+        $information->update($validatedData);
+        return redirect()->route('informations.show', $validatedData['slug'])->with('update', 'Information Event successfully updated!');
     }
 
     /**
@@ -63,6 +109,6 @@ class AdminInformationController extends Controller
     public function destroy(Information $information)
     {
         Information::destroy($information->id);
-        return redirect('/dashboard/admin/informations')->with('success', 'Information has been deleted !!!!');
+        return redirect('/dashboard/admin/informations')->with('delete', 'Information has been Slainn !!!!');
     }
 }

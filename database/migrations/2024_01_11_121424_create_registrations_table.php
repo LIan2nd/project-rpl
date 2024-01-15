@@ -1,5 +1,6 @@
 <?php
 
+use Carbon\Carbon;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -14,6 +15,7 @@ return new class extends Migration {
             $table->id();
             $table->foreignId('user_id');
             $table->foreignId('information_id');
+            $table->timestamp('registration_time')->default(Carbon::now());
             $table->timestamps();
         });
     }

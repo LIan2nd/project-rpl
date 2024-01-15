@@ -22,16 +22,17 @@
         </div>
     </section>
     <!--End Page Title-->
-
     <section class="service-overview section">
         <div class="container">
+            @if (session('success'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <p>{{ session('success') }}</p>
+                </div>
+            @endif
             <div class="row">
                 <div class="col-lg-6 mb-5 mb-lg-0">
                     <div class="content-block">
                         <h2>{{ $information->name }}</h2>
-                        <p>
-                            {!! $information->description !!}
-                        </p>
                         <ul>
                             <li>
                                 <i class="fas fa-map-marker-alt"></i>{{ $information->location }}
@@ -43,9 +44,27 @@
                                 <i class="fas fa-clock"></i>{{ $information->time }}
                             </li>
                         </ul>
-                        @auth
-                            <a href="appointment.html" class="btn btn-style-one">Register</a>
-                        @endauth
+                        <p>
+                            {!! $information->description !!}
+                        </p>
+                        @can('user')
+                            @if (!Auth::user()->hasRegistered($information->id))
+                                <form action="/registrations" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="information_id" value="{{ $information->id }}">
+                                    <input type="hidden" name="slug" value="{{ $information->slug }}">
+                                    <button type="submit" onclick="return confirm('Are you sure u wanna join this Event?')"
+                                        class="btn btn-style-one">Register</button>
+                                </form>
+                            @else
+                                <input type="button" style="cursor: default;" class="btn btn-style-one" readonly
+                                    onclick="return alert('You\'ve registered')" value="Registered" />
+                            @endif
+                        @endcan
+                        @cannot('user')
+                            <input type="button" readonly style="cursor: not-allowed"
+                                onclick="return alert('Login as User to Register')" class="btn btn-style-one" value="register">
+                        @endcannot
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -173,7 +192,7 @@
                             <div class="item">
                                 <div class="inner-box">
                                     <div class="img_holder">
-                                        <a href="/informations/information/{{ $information->id }}">
+                                        <a href="/informations/information/{{ $information->slug }}">
                                             <img loading="lazy" src="{{ asset('user') }}/images/information/info-1.png"
                                                 alt="images" class="img-fluid">
                                         </a>
@@ -184,14 +203,18 @@
                                         <a href="/information">
                                             <h6>{{ $information->name }}</h6>
                                         </a>
-                                        <p>{!! Str::limit($information->description, 55) !!} <a href="/information">read more</a></p>
+                                        <p>{!! Str::limit($information->description, 55) !!} <a
+                                                href="/informations/information/{{ $information->id }}">
+                                                @if (str_contains($information->description, '<div>'))
                                     </div>
-                                </div>
-                            </div>
-                        @endforeach
+                        @endif read more</a></p>
                     </div>
                 </div>
             </div>
+            @endforeach
+        </div>
+        </div>
+        </div>
         </div>
     </section>
     <!--End Service Section-->

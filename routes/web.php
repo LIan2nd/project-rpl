@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\AdminCategoryController;
 use App\Http\Controllers\AdminInformationController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\ContributorRegistrationController;
 use App\Http\Controllers\DashboardArticleController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\RegistrationController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ArticleController;
@@ -39,34 +41,40 @@ Route::group(['middleware' => 'guest'], function () {
 
 
 // Route Group Dashboard
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => ['auth']], function () {
+    // Event Registration Route
+    Route::get('/dashboard/admin/infomations/registrations/{information:slug}', [RegistrationController::class, 'index']);
+    Route::post('/registrations', [RegistrationController::class, 'store']);
     // Dashboard Route
     Route::get('/dashboard', [DashboardController::class, 'index']);
-
+    // Articles Dashboard Route
+    Route::resource('/dashboard/articles', DashboardArticleController::class);
     // Route aneh-anehh
     Route::get('/logout', function () {
         return view('etc.mauKemana');
     });
-
     // Logout Route
     Route::post('/logout', [LoginController::class, 'logout']);
 
-    // Dashboard Route
-    Route::get('/dashboard/admin/informations', [AdminInformationController::class, 'index']);
-    Route::delete('/dashboard/admin/informations/{information:id}', [AdminInformationController::class, 'destroy']);
-    Route::get('/dashboard/admin/users', [AdminUserController::class, 'index']);
-    Route::post('/dashboard/admin/users/validate/{user:id}', [AdminUserController::class, 'contValidate']);
+    // Admin and Contributor Route Group
+    Route::group(['middleware' => ['admin', 'validated']], function () {
+        // Dashboard Route
+        Route::resource('/dashboard/admin/informations', AdminInformationController::class);
 
-    // Articles Dashboard Route
-    Route::resource('/dashboard/articles', DashboardArticleController::class);
+        Route::group(['middleware' => 'admin.super'], function () {
+            Route::get('/dashboard/admin/users', [AdminUserController::class, 'index']);
+            Route::post('/dashboard/admin/users/validate/{user:id}', [AdminUserController::class, 'contValidate']);
+            Route::resource('/dashboard/admin/categories', AdminCategoryController::class);
+        });
+    });
+
 });
 
 // Route Without Group
 Route::get('/informations', [InformationController::class, 'index']);
-Route::get('/informations/information/{information:id}', [InformationController::class, 'show']);
+Route::get('/informations/information/{information:slug}', [InformationController::class, 'show'])->name('user.informations.show');
 Route::get('/articles', [ArticleController::class, 'index']);
-Route::get('/articles/article/{article:id}', [ArticleController::class, 'show']);
-
+Route::get('/articles/article/{article:slug}', [ArticleController::class, 'show']);
 
 // Route with Controller End
 

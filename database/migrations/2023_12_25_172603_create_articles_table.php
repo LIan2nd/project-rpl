@@ -16,6 +16,7 @@ return new class extends Migration {
             $table->foreignId('category_id');
             $table->foreignId('user_id');
             $table->string('title');
+            $table->string('slug')->unique();
             $table->text('body');
             $table->datetime('published_at')->default(Carbon::now())->nullable();
             $table->timestamps();

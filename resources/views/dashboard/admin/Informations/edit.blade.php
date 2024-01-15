@@ -9,7 +9,7 @@
                             <div class="card-body">
                                 <h5 class="card-title text-primary">Lord, {{ Auth::user()->username }}</h5>
                                 <p class="mb-4">
-                                    Edit Your <span class="fw-bold">Article!</span>
+                                    Let's Create <span class="fw-bold">Information!</span>
                                 </p>
                             </div>
                         </div>
@@ -31,36 +31,58 @@
                     <div class="col-xl">
                         <div class="card mb-4">
                             <div class="card-header d-flex justify-content-between align-items-center">
-                                <h5 class="mb-0">Edit Article</h5>
-                                <small class="text-muted float-end">Created with Love <i class='bx bxs-skull'></i></small>
+                                <h5 class="mb-0">New Information Event</h5>
+                                <small class="text-muted float-end">Create with Love <i class='bx bxs-skull'></i></small>
                             </div>
                             <div class="card-body">
-                                <form method="POST" action="/dashboard/articles/{{ $article->slug }}"
-                                    enctype="multipart/form-data">
-                                    @csrf
+                                <form method="POST" action="/dashboard/admin/informations/{{ $information->slug }}">
                                     @method('PUT')
+                                    @csrf
                                     <div class="mb-3">
-                                        <label class="form-label" for="title">Title</label>
-                                        <input type="text" name="title"
-                                            class="form-control @error('title') is-invalid @enderror" id="title"
-                                            placeholder="Your Article title" value="{{ OLD('title', $article->title) }}"
-                                            required autofocus />
-                                        @error('title')
+                                        <label class="form-label" for="name">Name</label>
+                                        <input type="text" name="name"
+                                            class="form-control @error('name') is-invalid @enderror" id="name"
+                                            placeholder="Event name" value="{{ OLD('name', $information->name) }}" required
+                                            autofocus />
+                                        @error('name')
                                             <div class="form-text text-danger">
                                                 {{ $message }}
                                             </div>
                                         @enderror
                                     </div>
                                     <div class="mb-3">
-                                        <label for="category_id" class="form-label">Category</label>
-                                        <select class="form-select" name="category_id" id="category_id">
-                                            @foreach ($categories as $category)
-                                                <option value="{{ $category->id }}"
-                                                    {{ old('category_id', $article->category->id) == $category->id ? 'selected' : '' }}>
-                                                    {{ $category->name }}
-                                                </option>
-                                            @endforeach
-                                        </select>
+                                        <label class="form-label" for="date">Date</label>
+                                        <input type="date" name="date"
+                                            class="form-control @error('date') is-invalid @enderror" id="date"
+                                            value="{{ OLD('date', $information->date) }}" required autofocus />
+                                        @error('date')
+                                            <div class="form-text text-danger">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label" for="time">Time</label>
+                                        <input type="text" name="time"
+                                            class="form-control @error('time') is-invalid @enderror" id="time"
+                                            value="{{ OLD('time', $information->time) }}" required autofocus />
+                                        @error('time')
+                                            <div class="form-text text-danger">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label" for="location">Location</label>
+                                        <input type="text" name="location"
+                                            class="form-control @error('location') is-invalid @enderror" id="location"
+                                            placeholder="Event Location"
+                                            value="{{ OLD('location', $information->location) }}" required autofocus />
+                                        @error('location')
+                                            <div class="form-text text-danger">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
                                     </div>
                                     {{-- <div class="mb-3">
                                         <label for="image" class="form-label @error('image') is-invalid @enderror">Event
@@ -80,19 +102,19 @@
                                         </div>
                                     </div> --}}
                                     <div class="mb-3">
-                                        <label for="body" class="form-label">Body</label>
-                                        @error('body')
+                                        <label for="description" class="form-label">Description</label>
+                                        @error('description')
                                             <div class="alert alert-danger alert-dismissible" role="alert">
                                                 {{ $message }}
                                                 <button type="button" class="btn-close" data-bs-dismiss="alert"
                                                     aria-label="Close"></button>
                                             </div>
                                         @enderror
-                                        <input id="body" type="hidden" name="body"
-                                            value="{{ OLD('body', $article->body) }}" required>
-                                        <trix-editor input="body"></trix-editor>
+                                        <input id="description" type="hidden" name="description"
+                                            value="{{ OLD('description', $information->description) }}" required>
+                                        <trix-editor input="description"></trix-editor>
                                     </div>
-                                    <button type="submit" class="btn btn-primary">Edit Article</button>
+                                    <button type="submit" class="btn btn-primary">Create an Information Event</button>
                                 </form>
                             </div>
                         </div>

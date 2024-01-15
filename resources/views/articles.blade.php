@@ -31,13 +31,13 @@
                                 <div class="item-holder">
                                     <div class="image-box">
                                         <figure>
-                                            <a href="/articles/article/{{ $article->id }}"><img loading="lazy"
+                                            <a href="/articles/article/{{ $article->slug }}"><img loading="lazy"
                                                     class="img-fluid" src="{{ asset('user') }}/images/artikel/artikel2.png"
                                                     alt="" /></a>
                                         </figure>
                                     </div>
                                     <div class="content-text">
-                                        <a href="/articles/article/{{ $article->id }}">
+                                        <a href="/articles/article/{{ $article->slug }}">
                                             <h4>
                                                 {{ $article->title }}
                                             </h4>
@@ -47,32 +47,33 @@
                                             / {{ Carbon::parse($article->published_at)->format('d F Y') }} - in <a
                                                 href="/articles?category={{ $article->category->slug }}">{{ $article->category->name }}</a></span>
                                         <p>
-                                            {{ mb_strimwidth($article->body, 0, 200) }}
+                                            {{-- {!! mb_strimwidth($article->body, 0, 200) !!} --}}
+                                            {!! Str::limit($article->body, 150) !!}
+                                            @php
+                                                $string = $article->body;
+                                                $charCount = strlen($string);
+                                                if ($charCount > 200) {
+                                                    # code...
+                                                    if (str_contains($article->body, '<div>')) {
+                                                        echo '</div>';
+                                                    } elseif (str_contains($article->body, '<span>')) {
+                                                        echo '</span>';
+                                                    }
+                                                }
+                                            @endphp
                                         </p>
                                         <div class="link-btn">
-                                            <a href="/articles/article/{{ $article->id }}" class="btn-style-one">read
+                                            <a href="/articles/article/{{ $article->slug }}" class="btn-style-one">read
                                                 more</a>
                                         </div>
                                     </div>
                                 </div>
                             @endforeach
 
-                            {{-- <div class="styled-pagination"> --}}
-                            {{-- <ul>
-                                    <li>
-                                        <a class="prev" href="blog.html"><span class="fas fa-angle-left"
-                                                aria-hidden="true"></span></a>
-                                    </li>
-                                    <li><a href="blog.html" class="active">1</a></li>
-                                    <li><a href="blog.html">2</a></li>
-                                    <li><a href="blog.html">3</a></li>
-                                    <li>
-                                        <a class="next" href="blog.html"><span class="fas fa-angle-right"
-                                                aria-hidden="true"></span></a>
-                                    </li>
-                                </ul> --}}
-                            <div class="mt-5">
-                                {{ $articles->links() }}
+                            <div class="styled-pagination">
+                                <div class="mt-5">
+                                    {{ $articles->links() }}
+                                </div>
                             </div>
                         @else
                             <div>
@@ -96,7 +97,7 @@
                                 @endif
                                 <div class="input-group">
                                     <input class="form-control" type="search" name="search" placeholder="Enter to Search"
-                                        required="" autocomplete="off" value="{{ request('search') }}" />
+                                        autocomplete="off" value="{{ request('search') }}" />
                                 </div>
                             </form>
                         </div>
@@ -105,7 +106,7 @@
                                 <h6>Categories</h6>
                             </div>
                             <ul class="categorise-list">
-                                @if ($articles->count())
+                                @if ($categories->count())
                                     @foreach ($categories as $category)
                                         <li>
                                             <a href="/articles?category={{ $category->slug }}">{{ $category->name }}

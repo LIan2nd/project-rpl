@@ -50,6 +50,16 @@ class User extends Authenticatable
         return $this->hasMany(Registration::class);
     }
 
+    public function hasRegistered($information_id)
+    {
+        return $this->registration()->where('information_id', $information_id)->exists();
+    }
+
+    public function informations()
+    {
+        return $this->hasMany(Information::class);
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *

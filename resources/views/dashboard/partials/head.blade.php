@@ -14,13 +14,17 @@
         @elseif (Request::is('dashboard/informations/create'))
             Create Information
         @elseif (Request::is('dashboard/admin/informations'))
-            Events
+            Informations
+        @elseif (Request::is('dashboard/admin/informations/create'))
+            Create Information
         @elseif (Request::is('dashboard/articles*'))
             Articles
         @elseif (Request::is('dashboard/admin/users'))
             Users
         @elseif (Request::is('dashboard/admin/subscriptions'))
             Subcriptions
+        @elseif (Request::is('dashboard/admin/categories'))
+            Categories
         @elseif (Request::is('dashboard/admin/categories/create'))
             Create Category
         @else

@@ -9,7 +9,7 @@
                             <div class="card-body">
                                 <h5 class="card-title text-primary">Hii, {{ Auth::user()->name }} 🎉</h5>
                                 <p class="mb-4">
-                                    All categories here are your <span class="fw-bold">Categories-</span>, wanna make a new
+                                    These all article <span class="fw-bold">Categories-</span>, wanna make a new
                                     Category?
                                 </p>
                                 @if ($categories->count())
@@ -33,9 +33,19 @@
             </div>
         </div>
 
-        @if (session('success'))
+        @if (session('create'))
             <div class="alert alert-success alert-dismissible" role="alert">
-                <strong> {{ session('success') }} </i></strong>
+                <strong> {{ session('create') }} </i></strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @elseif(session('update'))
+            <div class="alert alert-warning alert-dismissible" role="alert">
+                <strong> {{ session('update') }} </i></strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @elseif(session('delete'))
+            <div class="alert alert-danger alert-dismissible" role="alert">
+                <strong> {{ session('delete') }} </i></strong>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
@@ -73,7 +83,7 @@
                                             <button class="btn btn-outline-danger d-inline" data-bs-toggle="tooltip"
                                                 data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true"
                                                 title="<i class='bx bx-message-alt-x'></i>&nbsp; <span>category Delete</span>"
-                                                onclick="return confirm('Are You sure u want to DESTROYY this category?')"
+                                                onclick="return confirm('Are You sure u want to DESTROYY this category? If you delete this category, all articles in this category will be deleted too.')"
                                                 type="submit"><span class="badge me-2"><i
                                                         class="bx bx-trash me-1"></i></span></button>
                                         </form>

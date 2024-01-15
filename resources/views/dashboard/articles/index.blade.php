@@ -34,8 +34,15 @@
         </div>
 
         @if (session('success'))
+            <div class="alert alert-success alert-dismissible" role="alert">
+                <strong>{{ session('success') }}</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
+
+        @if (session('deleteSuccess'))
             <div class="alert alert-danger alert-dismissible" role="alert">
-                <strong><i class='bx bx-cut'></i> {{ session('success') }} <i class='bx bxs-radiation'></i></strong>
+                <strong> {{ session('deleteSuccess') }}</i></strong>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
@@ -66,20 +73,20 @@
                                         {{ $article->category->name }}
                                     </td>
                                     <td>
-                                        <a href="/articles/article/{{ $article->id }}">To Article Page</a>
+                                        <a href="/articles/article/{{ $article->slug }}">To Article Page</a>
                                     </td>
                                     <td class="text-center">
                                         <a class="btn btn-outline-info" data-bs-toggle="tooltip" data-bs-offset="0,4"
                                             data-bs-placement="top" data-bs-html="true"
                                             title="<i class='bx bx-info-circle'></i>&nbsp; <span>Article Detail</span>"
-                                            href="/dashboard/articles/{{ $article->id }}"><span class="badge me-2"><i
+                                            href="/dashboard/articles/{{ $article->slug }}"><span class="badge me-2"><i
                                                     class="bx bx-detail me-1"></i></span></a>
                                         <a class="btn btn-outline-warning" data-bs-toggle="tooltip" data-bs-offset="0,4"
                                             data-bs-placement="top" data-bs-html="true"
                                             title="<i class='bx bx-edit'></i>&nbsp; <span>Article Edit</span>"
-                                            href="/dashboard/articles/{{ $article->id }}/edit"><span class="badge me-2"><i
+                                            href="/dashboard/articles/{{ $article->slug }}/edit"><span class="badge me-2"><i
                                                     class="bx bx-edit-alt me-1"></i></span></a>
-                                        <form action="/dashboard/articles/{{ $article->id }}" class="d-inline"
+                                        <form action="/dashboard/articles/{{ $article->slug }}" class="d-inline"
                                             method="post">
                                             @method('delete')
                                             @csrf
@@ -104,7 +111,7 @@
                         <div class="card-body">
                             <h5 class="card-title text-info">Ooppss!!</h5>
                             <p class="card-text">You haven't an Article yet, Let's make some <strong>Article</strong>.</p>
-                            <a href="dashboard/article/create" class="btn btn-primary">Create an Article</a>
+                            <a href="articles/create" class="btn btn-primary">Create an Article</a>
                         </div>
                     </div>
                 </div>

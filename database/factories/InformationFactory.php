@@ -18,6 +18,9 @@ class InformationFactory extends Factory
     {
         return [
             'name' => fake()->sentence(mt_rand(1, 3)),
+            'slug' => fake()->slug(mt_rand(1, 3)),
+            'owner' => fake()->name(),
+            'last_edited' => fake()->date(),
             'description' => fake()->paragraph(mt_rand(5, 10)),
             'location' => fake()->country(),
             'date' => fake()->date(),

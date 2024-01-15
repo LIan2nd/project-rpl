@@ -17,9 +17,10 @@ class ArticleFactory extends Factory
     public function definition(): array
     {
         return [
-            'category_id' => mt_rand(1, 2),
+            'category_id' => mt_rand(1, 3),
             'user_id' => mt_rand(1, 2),
             'title' => fake()->sentence(mt_rand(1, 3)),
+            'slug' => fake()->slug(mt_rand(1, 3)),
             'body' => collect(fake()->paragraphs(mt_rand(6, 12)))->map(fn($p) => "<span>$p</span>")->implode('')
         ];
     }

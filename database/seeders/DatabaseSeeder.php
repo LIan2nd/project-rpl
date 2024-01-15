@@ -33,6 +33,22 @@ class DatabaseSeeder extends Seeder
         ]);
 
         User::create([
+            'name' => 'Admin2',
+            'username' => 'admin2',
+            'role_id' => 3,
+            'email' => 'admin2@gmail.com',
+            'password' => bcrypt('admin123')
+        ]);
+
+        User::create([
+            'name' => 'User Biasa',
+            'username' => 'userbiasa',
+            'role_id' => 1,
+            'email' => 'liand@gmail.com',
+            'password' => bcrypt('userbiasa')
+        ]);
+
+        User::create([
             'name' => 'unValidateContributor',
             'username' => 'otwvalidatecontributor',
             'contributor' => 'false',
@@ -43,16 +59,22 @@ class DatabaseSeeder extends Seeder
 
         Category::create([
             'name' => 'Olahraga',
-            'slug' => 'olagraga'
+            'slug' => 'olahraga'
         ]);
+
         Category::create([
             'name' => 'Kesehatan',
             'slug' => 'kesehatan'
         ]);
 
+        Category::create([
+            'name' => 'Teknologi',
+            'slug' => 'teknologi'
+        ]);
+
         User::factory(5)->create();
-        Article::factory(3)->create();
-        Information::factory(5)->create();
+        Article::factory(6)->create();
+        Information::factory(14)->create();
 
         Role::create([
             'name' => 'Common'

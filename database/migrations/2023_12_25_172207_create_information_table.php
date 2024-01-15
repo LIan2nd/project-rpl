@@ -14,9 +14,13 @@ return new class extends Migration {
         Schema::create('information', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('owner');
+            $table->foreignId('user_id')->nullable();
+            $table->timestamp('last_edited')->default(Carbon::now())->nullable();
+            $table->string('slug');
             $table->text('description');
             $table->string('location');
-            $table->dateTime('date')->default(Carbon::now());
+            $table->dateTime('date');
             $table->string('time');
             $table->timestamps();
         });

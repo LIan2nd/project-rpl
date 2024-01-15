@@ -71,7 +71,7 @@
                                     <li class="item">
                                         <div class="media">
                                             <div class="media-left mr-3">
-                                                <a href="blog-details.html">
+                                                <a href="/articles/article/{{ $article->slug }}">
                                                     <img loading="lazy"
                                                         src="{{ asset('user') }}/images/artikel/artikel-home-1.png"
                                                         alt="post-thumb" />
@@ -80,7 +80,7 @@
                                             <div class="media-body">
                                                 <h5>
                                                     <a
-                                                        href="/articles/article/{{ $article->id }}">{{ $article->title }}</a>
+                                                        href="/articles/article/{{ $article->slug }}">{{ $article->title }}</a>
                                                 </h5>
                                                 <p>
                                                     {!! Str::limit($article->body, 50) !!}
